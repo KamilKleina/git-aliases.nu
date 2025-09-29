@@ -75,9 +75,6 @@ export alias gb = git branch
 export alias gbD = git branch --delete --force
 export alias gba = git branch --all
 export alias gbd = git branch --delete
-export alias gbg = LANG=C git branch -vv | grep ": gone]"
-export alias gbgD = LANG=C git branch --no-color -vv | ^grep ": gone]" | cut -c 3- | awk '"'"'{print $1}'"'"' | xargs git branch -D
-export alias gbgd = LANG=C git branch --no-color -vv | ^grep ": gone]" | cut -c 3- | awk '"'"'{print $1}'"'"' | xargs git branch -d
 export alias gbl = git blame -w
 export alias gbm = git branch --move
 export alias gbnm = git branch --no-merged
@@ -366,5 +363,25 @@ export def ggpnp [args: string = ""] {
         ggl $args
         ggp $args
     }
+}
+# Get branches that do not exists on remote
+export def gbg [] {
+    if (is_git_repo) == false {
+        return
+    }
+    git branch -vv --format='%(refname:short)|%(objectname:short)|%(upstream:track)|%(contents:subject)'
+    | lines
+    | where { |it| $it =~ "gone]" }
+    | split column "|"
+    | select column1 column2 column4
+    | rename branch_name commit_hash commit_message
+}
+# Remove branches that do not exists on remote (force)
+export def gbgD [] {
+    gbg | get branch_name | each { |branch| git branch -D $branch }
+}
+# Remove branches that do not exists on remote
+export def gbgd [] {
+    gbg | get branch_name | each { |branch| git branch -d $branch }
 }
 
