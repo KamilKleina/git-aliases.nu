@@ -241,12 +241,12 @@ export alias gtl = git tag --sort=-v:refname -n --list "${1}*"
 export alias gts = git tag --sign
 export alias gtv = git tag | sort -V
 export alias gunignore = git update-index --no-assume-unchanged
+export alias gw = git worktree
+export alias gwa = git worktree add
 export alias gwch = git whatchanged -p --abbrev-commit --pretty=medium
-export alias gwt = git worktree
-export alias gwta = git worktree add
-export alias gwtls = git worktree list
-export alias gwtmv = git worktree move
-export alias gwtrm = git worktree remove
+export alias gwl = git worktree list
+export alias gwm = git worktree move
+export alias gwr = git worktree remove
 
 ### FUNCTIONS
 export def gpoat [] { git push origin --all; git push origin --tags }

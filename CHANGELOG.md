@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 2026-01-20
+
+| Modified      | Description |
+|---------------|-------------|
+| `gw`         | git worktree (before gwt). |
+| `gwa`         | git worktree add (before gwta). |
+| `gwl`         | git worktree list (before gwtls). |
+| `gwm`         | git worktree move (before gwtmv). |
+| `gwr`         | git worktree remove (before gwtrm). |
+
 ## 2025-09-30
 
 | Modified      | Description |
