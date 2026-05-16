@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 2026-05-16
+
+| Added      | Description |
+|------------|-------------|
+| `glb`      | Shows last 5 commits with author, date, and full message body. |
+
 ## 2026-01-20
 
 | Modified      | Description |
