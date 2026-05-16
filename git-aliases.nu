@@ -151,6 +151,7 @@ export alias glog = git log --oneline --decorate --graph
 export alias gloga = git log --oneline --decorate --graph --all
 export alias glol = git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset'
 export alias glola = git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --all
+export alias glb = git log -n 5 --reverse --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %Cgreen%ar%Creset %Cblue<%an>%Creset%n%s%n%n%b'
 export alias glols = git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --stat
 export alias glp = _git_log_prettily
 export alias gluc = git pull upstream (git_current_branch)
