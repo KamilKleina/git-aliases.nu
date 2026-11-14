@@ -126,7 +126,7 @@ export alias gdup = git diff @{upstream}
 export alias gdw = git diff --word-diff
 export alias gf = git fetch
 export alias gfa = git fetch --all --tags --prune --jobs=10
-export alias gfg = git ls-files | grep
+export def gfg [...pattern: string] { git ls-files | grep ...$pattern }
 export alias gfo = git fetch origin
 export alias gga = git gui citool --amend
 export alias ggc = git gui citool
@@ -135,7 +135,7 @@ export alias ggpush = git push origin (git_current_branch)
 export alias ggsup = git branch --set-upstream-to=origin/(git_current_branch)
 export alias ghh = git help
 export alias gignore = git update-index --assume-unchanged
-export alias gignored = git ls-files -v | grep "^[[:lower:]]"
+export def gignored [] { git ls-files -v | grep "^[[:lower:]]" }
 export alias gk = gitk --all --branches &!
 export alias gke = gitk --all (git log --walk-reflogs --pretty=%h) &!
 export alias gl = git pull
@@ -234,13 +234,13 @@ export alias gsts = git stash show --patch
 export alias gsu = git submodule update
 export alias gsw = git switch
 export alias gswc = git switch --create
-export alias gswd = git switch (git symbolic-ref --short refs/remotes/origin/HEAD | sed 's|^origin/||' | str trim)
-export alias gswi = git switch (git branch --all | fzf --no-preview --height=50 --border | str trim)  # switch branch
+export def gswd [] { git switch (git symbolic-ref --short refs/remotes/origin/HEAD | sed 's|^origin/||' | str trim) }
+export def gswi [] { git switch (git branch --all | fzf --no-preview --height=50 --border | str trim) }  # switch branch
 export alias gswm = git switch (git_main_branch)
 export alias gta = git tag --annotate
 export alias gtl = git tag --sort=-v:refname -n --list "${1}*"
 export alias gts = git tag --sign
-export alias gtv = git tag | sort -V
+export def gtv [] { git tag | ^sort -V }
 export alias gunignore = git update-index --no-assume-unchanged
 export alias gw = git worktree
 export alias gwa = git worktree add
